@@ -1,0 +1,24 @@
+def bakery_sales():
+    # Constants
+    REGULAR_PRICE = 185.00
+    DISCOUNT_RATE = 0.60
+
+    # Read the number of loaves from the user
+    fresh_loaves = int(input("Enter the number of fresh loaves purchased: "))
+    day_old_loaves = int(input("Enter the number of day old loaves purchased: "))
+
+    # Calculate the prices
+    fresh_loaves_price = fresh_loaves * REGULAR_PRICE
+    day_old_loaves_price = day_old_loaves * REGULAR_PRICE * (1 - DISCOUNT_RATE)
+
+    # Calculate the total amount
+    total_price = fresh_loaves_price + day_old_loaves_price
+
+    # Display the results with proper formatting
+    print(f"Regular price: Rs.{REGULAR_PRICE:.2f}")
+    print(f"Amount of new loaves: Rs.{fresh_loaves_price:>8.2f}")
+    print(f"Amount of day old loaves: Rs.{day_old_loaves_price:>8.2f}")
+    print(f"Total amount: Rs.{total_price:>8.2f}")
+
+# Run the function
+bakery_sales()

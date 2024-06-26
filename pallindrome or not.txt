@@ -1,0 +1,15 @@
+def is_palindrome(x: int) -> bool:
+    # Negative numbers are not palindromes
+    if x < 0:
+        return False
+    
+    # Convert the number to a string
+    x_str = str(x)
+    
+    # Check if the string is equal to its reverse
+    return x_str == x_str[::-1]
+
+# Test cases
+print(is_palindrome(121))  
+print(is_palindrome(-121))
+print(is_palindrome(10))   

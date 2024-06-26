@@ -1,0 +1,35 @@
+def calculate(s: str) -> int:
+    if not s:
+        return 0
+
+    stack = []
+    current_number = 0
+    operation = '+'
+    s = s.replace(" ", "")  # Remove any spaces in the string
+
+    for i, ch in enumerate(s):
+        if ch.isdigit():
+            current_number = current_number * 10 + int(ch)
+        
+        # If it's an operator or we are at the end of the string
+        if ch in "+-*/" or i == len(s) - 1:
+            if operation == '+':
+                stack.append(current_number)
+            elif operation == '-':
+                stack.append(-current_number)
+            elif operation == '*':
+                stack.append(stack.pop() * current_number)
+            elif operation == '/':
+                top = stack.pop()
+                stack.append(int(top / current_number))  # Ensure integer division truncates towards zero
+            
+            operation = ch
+            current_number = 0
+    
+    return sum(stack)
+
+# Test cases
+print(calculate("3+2*2"))  # Output: 7
+print(calculate(" 3/2 "))  # Output: 1
+print(calculate(" 3+5 / 2 "))  # Output: 5
+print(calculate(" 14-3/2 "))  # Output: 13

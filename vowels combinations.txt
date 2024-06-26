@@ -1,0 +1,13 @@
+from math import comb
+
+def count_sorted_vowel_strings(n):
+    if n <= 0:
+        return 0
+    return comb(n + 4, 4)
+
+# Test cases
+print(count_sorted_vowel_strings(1))   # Output: 5
+print(count_sorted_vowel_strings(2))   # Output: 15
+print(count_sorted_vowel_strings(33))  # Output: 66045
+print(count_sorted_vowel_strings(-5))  # Output: 0
+print(count_sorted_vowel_strings(10))  # Output: 1001

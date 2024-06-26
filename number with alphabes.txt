@@ -1,0 +1,42 @@
+def letter_combinations(digits):
+    if not digits:
+        return []
+    
+    # Mapping of digits to letters as per phone keypad
+    phone_map = {
+        '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno',
+        '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+    }
+    
+    def backtrack(index, path):
+        if index == len(digits):
+            combinations.append("".join(path))
+            return
+        
+        possible_letters = phone_map[digits[index]]
+        for letter in possible_letters:
+            path.append(letter)
+            backtrack(index + 1, path)
+            path.pop()
+    
+    combinations = []
+    backtrack(0, [])
+    return combinations
+
+# Test cases
+test_cases = ["23", "", "2", "9", "87"]
+expected_outputs = [
+    ["ad","ae","af","bd","be","bf","cd","ce","cf"],
+    [],
+    ["a","b","c"],
+    ["w","x","y","z"],
+    ["vs","vr","vq","vp","us","ur","uq","up","ts","tr","tq","tp"]
+]
+
+# Run and print test cases
+for i, digits in enumerate(test_cases):
+    result = letter_combinations(digits)
+    print(f"Input: {digits}")
+    print(f"Output: {result}")
+    print(f"Expected: {expected_outputs[i]}")
+    print(f"Test {'Passed' if result == expected_outputs[i] else 'Failed'}\n")

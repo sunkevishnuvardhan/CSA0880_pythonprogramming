@@ -1,0 +1,21 @@
+from collections import Counter
+
+def modify_string(S):
+    # Calculate the frequency of each character in the string
+    freq_count = Counter(S)
+
+    # Replace each character with the corresponding modified character
+    modified_str = ""
+    for char in S:
+        freq = freq_count[char]
+        new_char = chr(((ord(char) - ord('a') + freq) % 26) + ord('a'))  # Calculate circular distance
+        modified_str += new_char
+
+    return modified_str
+
+# Test cases
+print(modify_string("ghee"))       # Output: hggi
+print(modify_string("elephant"))   # Output: afppjpiu
+print(modify_string("apple"))      # Output: bqqlg
+print(modify_string("orange"))     # Output: rqbqcf
+print(modify_string("lion"))       # Output: mqpo

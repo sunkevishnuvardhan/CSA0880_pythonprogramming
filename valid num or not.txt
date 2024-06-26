@@ -1,0 +1,31 @@
+import re
+
+def is_valid_number(s: str) -> bool:
+    # Regular expression for a valid number
+    number_regex = re.compile(r"""
+        ^                    # Start of string
+        [+-]?                # Optional sign
+        (                    # Group for decimal numbers or integers
+            (\d+\.\d*) |     # Digits followed by a dot and optional digits
+            (\.\d+)  |       # A dot followed by digits
+            (\d+)            # Digits (integer)
+        )
+        ([eE][+-]?\d+)?      # Optional exponent part: e or E followed by an optional sign and digits
+        $                    # End of string
+    """, re.VERBOSE)
+    
+    # Match the entire string with the regular expression
+    return bool(number_regex.match(s))
+
+# Test cases
+print(is_valid_number("0"))       # True
+print(is_valid_number("e"))       # False
+print(is_valid_number(" "))       # False
+print(is_valid_number("."))       # False
+print(is_valid_number("%"))       # False
+print(is_valid_number("2e10"))    # True
+print(is_valid_number("-90E3"))   # True
+print(is_valid_number("3e+7"))    # True
+print(is_valid_number("+6e-1"))   # True
+print(is_valid_number("53.5e93")) # True
+print(is_valid_number("-123.456e789")) # True
