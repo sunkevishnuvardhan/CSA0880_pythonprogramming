@@ -1,0 +1,6 @@
+z = map(int,input("Enter numbers: ").split())
+x = list(z)
+x.sort()
+print("Sorted: ",x)
+x.reverse()
+print(x)
